@@ -1,0 +1,11 @@
+---
+# defaults file for rhel-dirty-cow-test
+
+script_base_url: https://access.redhat.com/sites/default/files
+script_name: rh-cve-2016-5195_5.sh
+
+script_url: "{{script_base_url}}/{{script_name}}"
+
+script_dir: /tmp
+
+

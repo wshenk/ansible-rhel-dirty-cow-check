@@ -1,0 +1,27 @@
+---
+# tasks file for rhel-dirty-cow-test
+
+- name: Download Dirty Cow Script
+  get_url:
+    url: "{{script_url}}"
+    dest: "{{script_dir}}/"
+
+- name: Ensure File is Executable
+  file:
+    path: "{{script_dir}}/{{script_name}}"
+    mode: '777'
+
+
+- name: Run Script Check
+  shell: "{{script_dir}}/{{script_name}}"
+  register: script_output
+
+- name: Print Output
+  debug:
+    var: script_output.stdout_lines
+
+- name: Delete File
+  file:
+    path: "{{script_dir}}/{{script_name}}"
+    state: absent
+
